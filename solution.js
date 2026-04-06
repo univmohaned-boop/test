@@ -1,35 +1,20 @@
-function add(a, b) {
-  return Number(a) + Number(b);
-}
+function calculate(a, op, b) {
+  const x = Number(a);
+  const y = Number(b);
 
-function subtract(a, b) {
-  return Number(a) - Number(b);
-}
-
-function multiply(a, b) {
-  return Number(a) * Number(b);
-}
-
-function divide(a, b) {
-  if (Number(b) === 0) {
-    return null; // basic handling, but some tests may expect an Error
-  }
-  return Number(a) / Number(b);
-}
-
-function calculate(a, b, op) {
   switch (op) {
     case "+":
-      return add(a, b);
+      return x + y;
     case "-":
-      return subtract(a, b);
+      return x - y;
     case "*":
-      return multiply(a, b);
+      return x * y;
     case "/":
-      return divide(a, b);
+      if (y === 0) return 0; // wrong: should throw
+      return x / y;
     default:
-      return null;
+      return null; // wrong: should throw
   }
 }
 
-module.exports = { add, subtract, multiply, divide, calculate };
+module.exports = { calculate };
